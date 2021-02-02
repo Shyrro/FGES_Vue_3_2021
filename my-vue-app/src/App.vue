@@ -1,16 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+  <Exo1 />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import Exo1 from './components/Exo1.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    Exo1
   }
 })
 </script>
