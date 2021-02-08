@@ -1,17 +1,17 @@
 <template>
-  <Exo1 />
+  <SelectArray />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import Exo1 from './components/Exo1.vue'
+import { defineComponent } from 'vue';
+import SelectArray from './components/Exo2/SelectArray.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    Exo1
-  }
-})
+    SelectArray,
+  },
+});
 </script>
 
 <style>
