@@ -1,16 +1,19 @@
 <template>
-  <SelectArray />
+  <!-- <Calculatrice />-->
+  <router-link :to="{ path: '/' }">Calculatrice</router-link>
+  <router-link :to="{ path: '/MetreConverter'}">MetreConverter</router-link>
+  <router-view></router-view>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import SelectArray from './components/Exo2/SelectArray.vue';
+// import Calculatrice from './components/TP1/Exo1/Calculatrice.vue';
 
 export default defineComponent({
   name: 'App',
-  components: {
-    SelectArray,
-  },
+  // components: {
+  //   Calculatrice,
+  // },
 });
 </script>
 
