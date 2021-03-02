@@ -1,16 +1,33 @@
 <template>
   <!-- <Calculatrice />-->
-  <router-link :to="{ path: '/' }">Calculatrice</router-link>
-  <router-link :to="{ path: '/MetreConverter'}">MetreConverter</router-link>
-  <router-view></router-view>
+  <div>
+    {{ rmData }}
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
+import { useStore } from 'vuex';
+import axios from 'axios';
 // import Calculatrice from './components/TP1/Exo1/Calculatrice.vue';
 
 export default defineComponent({
   name: 'App',
+  setup() {
+    const store = useStore();
+
+    store.commit('increment');
+    axios.get('https://rickandmortyapi.com/api/character').then((response) => {
+      store.commit('setData', response);
+    });
+
+    const rmData = computed(() => store.getters.getData);
+
+    return {
+      store,
+      rmData
+    }
+  }
   // components: {
   //   Calculatrice,
   // },
