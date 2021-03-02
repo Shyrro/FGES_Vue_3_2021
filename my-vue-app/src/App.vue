@@ -1,7 +1,7 @@
 <template>
   <!-- <Calculatrice />-->
   <div>
-    {{ rmData }}
+    {{ cards[0] }}
   </div>
 </template>
 
@@ -14,18 +14,23 @@ import axios from 'axios';
 export default defineComponent({
   name: 'App',
   setup() {
-    const store = useStore();
+    const cards = ref([]);
+    const options = {
+      headers: {
+        'x-rapidapi-key': '8f63c7eeddmsh9c1c7a90ad44690p1ae244jsn86d02298a4b9',
+        'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com'
+      }
+    };
 
-    store.commit('increment');
-    axios.get('https://rickandmortyapi.com/api/character').then((response) => {
-      store.commit('setData', response);
+    axios.get('https://omgvamp-hearthstone-v1.p.rapidapi.com/cards', options).then(function (response) {
+      // console.log(response.data["Basic"]);
+      cards.value = response.data["Basic"];
+    }).catch(function (error) {
+      console.error(error);
     });
-
-    const rmData = computed(() => store.getters.getData);
-
+    
     return {
-      store,
-      rmData
+      cards,
     }
   }
   // components: {
